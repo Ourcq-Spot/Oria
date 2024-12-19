@@ -1,0 +1,88 @@
+body > header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	/* position: sticky; */
+	position: fixed;
+	top: var(--header-yoffset, .33rem);
+	min-width: 80%;
+
+	border-radius: 1rem;
+	background-color: var(--color-1);
+	color: white;
+
+	font-family: Roboto;
+}
+
+body > header > a {
+	min-width: 10rem;
+	height: 3.5rem;
+}
+body > header .logo-oria {
+	max-width: 10rem;
+	max-height: 2.5rem;
+	padding: .5rem;
+}
+
+body > header .websiteMenu {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+body > header .websiteMenu > ul {
+	gap: 2rem;
+}
+/*body > header .websiteMenu .itemDecoration {
+	--decoration-height: .1em;
+	width: 0%;
+	height: var(--decoration-height);
+	margin-top: calc(var(--decoration-height) * (-1));
+	background-color: var(--color-0);
+	opacity: 0;
+	transition: all .4s ease;
+}*/
+
+body > header > :last-child {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1rem;
+
+	padding: .5rem 1.5rem;
+}
+
+
+body > header #lang-selector {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: .4em;
+
+	font-size: .8rem;
+	cursor: pointer;
+}
+body > header #lang-selector::after {
+	content: "";
+	display: block;
+	position: relative;
+	width: 1.33em;
+	height: 1.33em;
+	/*background-image: url("../img/icon-web.svg");*/
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+html[lang="fr"] > body > header #lang-selector::after {
+	background-image: url("../img/flag-fr.svg");
+}
+html[lang="en"] > body > header #lang-selector::after {
+	background-image: url("../img/flag-en.svg");
+}
+
+
+body > header .hoverable-btn-1 .btn-contact {
+	padding: .42em .9em;
+	font-size: 1em !important;
+}

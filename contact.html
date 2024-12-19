@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <!--<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">-->
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/contact.css">
+    <script src="js/script.js"></script>
+</head>
+<body>
+
+    <header>
+        <img class="logo-oria" src="img/logo-oria.svg" alt="ORIA" />
+        <nav class="websiteMenu">
+            <ul>
+                <li><a href=".">Accueil
+                    <div class="itemDecoration"></div></a></li>
+                <li><a href="histoire.html">Histoire
+                    <div class="itemDecoration"></div></a></li>
+                <li><a href="equipe.html">Équipe
+                    <div class="itemDecoration"></div></a></li>
+                <li><a href="projets.html">Projets
+                    <div class="itemDecoration"></div></a></li>
+                <li><a href="services.html">Services
+                    <div class="itemDecoration"></div></a></li>
+            </ul>
+        </nav>
+        <div>
+            <div class="selector-lang">FR</div>
+			<a class="hoverable-btn-1" href="contact.html">
+				<div class="btn-contact">Contact</div>
+            </a>
+            <!--<button class="btn-contact">Contact</button>-->
+        </div>
+    </header>
+
+    <main>
+
+
+        <section id="contact" class="wrapper">
+            <h1>Contactez-nous</h1>
+            <div class="form-container">
+                <!-- Partie gauche : Formulaire -->
+                <div class="form-left">
+                    <form action="#" method="POST" class="contact-form">
+                        <div class="form-group double">
+                            <div class="form-info">
+                                <input type="text" id="prenom" name="prenom" placeholder="Votre prénom*" required>
+                            </div>
+                            <div class="form-info">
+                                <input type="text" id="nom" name="nom" placeholder="Votre nom*" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="telephone" name="telephone" placeholder="Votre téléphone*" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Votre email professionnel*" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="4" placeholder="Votre message*" required></textarea>
+                        </div>
+                        <div class="button-container">
+                            <button type="submit" class="btn-submit">Envoyer</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="form-right">
+                    <h2>Quelques chiffres</h2>
+                    <div class="stats">
+                        <div>
+                            <img src="img/icon-3d-companies.png" alt="Icone entreprises"> 
+                            <span>+17 Entreprises</span>
+                        </div>
+                        <div>
+                            <img src="img/icon-3d-budget.png" alt="Icone budget"> 
+                            <span>0.5M€ Budget géré</span>
+                        </div>
+                        <div>
+                            <img src="img/icon-3d-ads.png" alt="Icone publicités"> 
+                            <span>+2k Publicités produites</span>
+                        </div>
+                    </div>
+                    <h3>Nos coordonnées</h3>
+                    <div>
+                        <img src="img/icon-location.svg" alt="Icone adresse"> 
+                        <span>1 Rue de Chablis, 93000 Bobigny</span>
+                    </div>
+                    <div>
+                        <img src="img/icon-phone.svg" alt="Icone téléphone"> 
+                        <span>04 06 09 77 42</span>
+                    </div>
+                    <div>
+                        <img src="img/icon-mail.svg" alt="Icone email"> 
+                        <span>agency.oria@gmail.com</span>
+                    </div>
+                    <div>
+                        <img src="img/icon-clock.svg" alt="Icone horaires"> 
+                        <span>9:00 à 13:00 et 14:00 à 19:00 du Lundi au Vendredi</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <special-footer></special-footer>
+
+</body>
+</html>
