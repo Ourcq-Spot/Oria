@@ -1,0 +1,377 @@
+<?php
+
+namespace view;
+
+use controller\AppController;
+
+/**
+ * A View object that builds the base of the website's HMI as text in HTML format.
+ * Automatically builds every needed tag for a generic page.
+ */
+class ViewHomePage extends ViewGenericPage {
+
+
+	public function buildHeadContent(): string {
+		$r = parent::buildHeadContent();
+		$r.="<link rel=\"stylesheet\" href=\"public/css/index.css\" />";
+		$r.="<script src=\"public/js/index_landing_fg_bg.js\"></script>";
+		$r.="<script src=\"public/js/index_landing_lettersHeadband.js\"></script>";
+		$r.="<script src=\"public/js/team_carrousel.js\"></script>";
+		$r.="<script src=\"public/js/projets_cards_3d.js\"></script>";
+		$r.="<script src=\"public/js/services_selector.js\"></script>";
+		$r.="<script src=\"public/js/contact_submit_ajax.js\"></script>";
+		return $r;
+	}
+
+	public function buildMainContent(): string {
+		$r = "";
+		$r.=$this->buildLandingSection();
+		$r.=$this->buildStorySection();
+		$r.=$this->buildTeamSection();
+		$r.=$this->buildProjectsSection();
+		$r.=$this->buildServicesSection();
+		$r.=$this->buildContactSection();
+		return $r;
+	}
+	public function buildLandingSection(): string {
+		$r = "";
+		$r.="<section id=\"landing\">";
+		$r.="<div class=\"foreground\"></div>";
+		$r.="<div class=\"background\"></div>";
+		$r.="<div id=\"lettersHeadband\" class=\"prevent-select\">";
+		$r.="<div class=\"wrapper\">";
+		$r.="<div class=\"lettersColumn\">";
+		for ($i=0; $i<3; $i++) {
+			$r.="<p>O</p><p>R</p><p>I</p><p>A</p>";
+		}
+		$r.="</div>";
+		$r.="</div>";
+		$r.="</div>";
+		$r.="<div class=\"content\">";
+		$r.="<h1>";
+		$r.="Concevoir & innover<br />";
+		$r.="au-delà de l'ordinaire";
+		$r.="</h1>";
+		$r.="<p>";
+		$r.="Chez Oria, nous transformons vos idées en solutions digitales uniques.<br />";
+		$r.="Avec un design percutant et des technologies innovantes, nous allons au-delà de l'ordinaire pour créer des expériences mémorables.";
+		$r.="</p>";
+		$r.="<p>";
+		$r.="Découvrez comment nous pouvons donner vie à vos ambitions.";
+		$r.="</p>";
+		//$r.="<a class=\"hoverable-btn-1\" href=\"contact.html\">";
+		$r.="<a class=\"hoverable-btn-1\" href=\"#contact\">";
+		$r.="<div class=\"btn-launch\">";
+		$r.="Lancez votre projet";
+		$r.="</div>";
+		$r.="</a>";
+		$r.="</div>";
+		$r.="</section>";
+		return $r;
+	}
+	public function buildStorySection(): string {
+		$r = "";
+		$r.="<section id=\"agencyStory\">";
+		$r.="<div class=\"content\">";
+		$r.="<div class=\"story\">";
+		$r.="<div class=\"text\">";
+		$r.="<h2>Histoire d'Oria</h2>";
+		$r.="<p>";
+		$r.="Chez Oria, nous transformons chaque idée en une <strong>expérience digitale unique</strong>. Guidés par la <strong>créativité</strong>, l'<strong>innovation</strong> et l’excellence, nous créons des solutions interactives et immersives pour les <strong>marques ambitieuses</strong>. Avec une équipe de talents multidisciplinaires, nous combinons design, stratégie digitale et technologie de pointe pour donner vie à vos projets.<br/>";
+		$r.="Notre mission ? Aller <strong>au-delà de l'ordinaire</strong> et créer des expériences captivantes.";
+		$r.="</p>";
+		$r.="</div>";
+		$r.="<div class=\"btn-launch-wrapper\">";
+		$r.="<a href=\"#projects\" class=\"btn-launch black\">";
+		$r.="<p class=\"value\">Découvrir nos projets</p>";
+		$r.="<div class=\"background\"></div>";
+		$r.="</a>";
+		$r.="</div>";
+		$r.="</div>";
+		$r.="<section id=\"keyNumbers\">";
+		$r.="<h3>En 2024 chez Oria</h3>";
+		$r.="<div class=\"listedNumbers\">";
+		$r.="<div id=\"keyNumber-partners\" class=\"keyNumber\">";
+		$r.="<p>10</p>";
+		$r.="<p>collaborateurs</p>";
+		$r.="</div>";
+		$r.="<div id=\"keyNumber-clients\" class=\"keyNumber\">";
+		$r.="<p>34</p>";
+		$r.="<p>clients</p>";
+		$r.="</div>";
+		$r.="<div id=\"keyNumber-turnover\" class=\"keyNumber\">";
+		$r.="<p>11.7 M €</p>";
+		$r.="<p>de chiffre d'affaires</p>";
+		$r.="</div>";
+		$r.="</div>";
+		$r.="</section>";
+		$r.="</div>";
+		$r.="<div class=\"timeline\">";
+		$r.="<img src=\"public/img/agency-story-timeline.svg\" alt=\"Notre histoire depuis 2024\" />";
+		$r.="</div>";
+		$r.="</section>";
+		return $r;
+	}
+	public function buildTeamSection(): string {
+		$r = "";
+		$r.="<section id=\"team\">";
+		$r.="<h2>Découvrir la dream team</h2>";
+		$r.="<div class=\"carrousel\">";
+		$r.="<div class=\"carrousel-track\">";
+		$r.="<div class=\"slide1\">";
+		$r.="<img src=\"public/img/team-card-adam.webp\" alt=\"collaborator 1\">";
+		$r.="<img src=\"public/img/team-card-cyrielle.webp\" alt=\"collaborator 2\">";
+		$r.="<img src=\"public/img/team-card-kellya.webp\" alt=\"collaborator 3\">";
+		$r.="<img src=\"public/img/team-card-david.webp\" alt=\"collaborator 4\">";
+		$r.="</div>";
+		$r.="<div class=\"slide2\">";
+		$r.="<img src=\"public/img/team-card-juan.webp\" alt=\"collaborator 5\">";
+		$r.="<img src=\"public/img/team-card-linh.webp\" alt=\"collaborator 6\">";
+		$r.="<img src=\"public/img/team-card-loucia.webp\" alt=\"collaborator 7\">";
+		$r.="<img src=\"public/img/team-card-merwan.webp\" alt=\"collaborator 8\">";
+		$r.="</div>";
+		$r.="<div class=\"slide3\">";
+		$r.="<img src=\"public/img/team-card-solan.webp\" alt=\"collaborator 9\">";
+		$r.="<img src=\"public/img/team-card-tiffany.webp\" alt=\"collaborator 10\">";
+		$r.="<img src=\"public/img/team-card-pdg.webp\" alt=\"collaborator 11\">";
+		$r.="</div>";
+		$r.="</div>";
+		$r.="<button class=\"carrousel-btn prev\">";
+		$r.="<i class=\"fas fa-arrow-left\"></i>";
+		$r.="</button>";
+		$r.="<button class=\"carrousel-btn next\">";
+		$r.="<i class=\"fas fa-arrow-right\"></i>";
+		$r.="</button>";
+		$r.="</div>";
+		$r.="</section>";
+		return $r;
+	}
+	public function buildProjectsSection(): string {
+		$r = "";
+		$r.="<section id=\"projects\" class=\"preview\">";
+		$r.="<h2>Projets</h2>";
+		$r.="<div class=\"wrapper\">";
+		$r.="<div class=\"wrapper-btn-more\">";
+		$r.="<a class=\"decoratedItem-1 btn-more white afterico-right-arrow\" href=\"projets.html\">";
+		$r.="<div class=\"wrapper decorationContainer\">";
+		$r.="<p>Voir plus</p>";
+		$r.="<div class=\"itemDecoration\"></div>";
+		$r.="</div>";
+		$r.="</a>";
+		$r.="</div>";
+		$r.="<div class=\"project-row\">";
+		$r.="<a class=\"project-card\" href=\"skyworth.html\">";
+		$r.="<img src=\"public/img/project1.png\" alt=\"Skyworth\">";
+		$r.="<h3>Skyworth</h3>";
+		$r.="<p>Nous avons conçu et développé le site web de Skyworth France pour le lancement de cette nouvelle marque de voiture électrique, en créant une plateforme qui reflète ses valeurs et ambitions pour le marché français.</p>";
+		$r.="<div class=\"btn-more\">Voir plus</div>";
+		$r.="</a>";
+		$r.="<a class=\"project-card\" href=\"guessmysong.html\">";
+		$r.="<img src=\"public/img/project2.png\" alt=\"GuessMySong\">";
+		$r.="<h3>GuessMySong</h3>";
+		$r.="<p>Nous avons développé l'application de reconnaissance vocale GuessMySong, permettant d'identifier des chansons en chantant ou fredonnant, avec une expérience utilisateur fluide et intuitive.</p>";
+		$r.="<div class=\"btn-more\">Voir plus</div>";
+		$r.="</a>";
+		$r.="<a class=\"project-card\" href=\"ecoecho.html\">";
+		$r.="<img src=\"public/img/project3.png\" alt=\"EcoEcho\">";
+		$r.="<h3>EcoEcho</h3>";
+		$r.="<p>Nous avons développé un site web pour promouvoir un événement sur les nouvelles technologies, avec une interface intuitive et attrayante. Ce projet a renforcé nos compétences en design et en collaboration multiculturelle.</p>";
+		$r.="<div class=\"btn-more\">Voir plus</div>";
+		$r.="</a>";
+		$r.="</div>";
+		$r.="</div>";
+		$r.="</section>";
+		return $r;
+	}
+	public function buildServicesSection(): string {
+		$r = "";
+		$r.="<section id=\"services\" class=\"preview\">";
+		$r.="<h2>Nos services</h2>";
+		$r.="<div class=\"subjects\">";
+		$r.="<div id=\"subject-graphism\" class=\"item selected\">";
+		$r.="<h4 class=\"subject-name\">Graphisme</h4>";
+		$r.="<svg class=\"icon-wrapper\" width=\"100%\" height=\"100%\" xmlns=\"http://www.w3.org/2000/svg\">";
+		$r.="<defs>";
+		$r.="<clipPath id=\"border-clip-1\">";
+		$r.="<rect class=\"border-1\" width=\"0\" height=\"0\" />";
+		$r.="</clipPath>";
+		$r.="</defs>";
+		$r.="<rect class=\"border-1\" clip-path=\"url(#border-clip-1)\" width=\"0\" height=\"0\" />";
+		$r.="<image class=\"icon\" xlink:href=\"public/img/icon-graphism.svg\" width=\"0\" height=\"0\" />";
+		$r.="</svg>";
+		$r.="</div>";
+		$r.="<div id=\"subject-print\" class=\"item\">";
+		$r.="<h4 class=\"subject-name\">Impression</h4>";
+		$r.="<svg class=\"icon-wrapper\" width=\"100%\" height=\"100%\" xmlns=\"http://www.w3.org/2000/svg\">";
+		$r.="<defs>";
+		$r.="<clipPath id=\"border-clip-2\">";
+		$r.="<rect class=\"border-1\" width=\"0\" height=\"0\" />";
+		$r.="</clipPath>";
+		$r.="</defs>";
+		$r.="<rect class=\"border-1\" clip-path=\"url(#border-clip-2)\" width=\"0\" height=\"0\" />";
+		$r.="<image class=\"icon\" xlink:href=\"public/img/icon-print.svg\" width=\"0\" height=\"0\" />";
+		$r.="</svg>";
+		$r.="</div>";
+		$r.="<div id=\"subject-web\" class=\"item\">";
+		$r.="<h4 class=\"subject-name\">Services Web</h4>";
+		$r.="<svg class=\"icon-wrapper\" width=\"100%\" height=\"100%\" xmlns=\"http://www.w3.org/2000/svg\">";
+		$r.="<defs>";
+		$r.="<clipPath id=\"border-clip-3\">";
+		$r.="<rect class=\"border-1\" width=\"0\" height=\"0\" />";
+		$r.="</clipPath>";
+		$r.="</defs>";
+		$r.="<rect class=\"border-1\" clip-path=\"url(#border-clip-3)\" width=\"0\" height=\"0\" />";
+		$r.="<image class=\"icon\" xlink:href=\"public/img/icon-websites.svg\" width=\"0\" height=\"0\" />";
+		$r.="</svg>";
+		$r.="</div>";
+		$r.="<div id=\"subject-ads\" class=\"item\">";
+		$r.="<h4 class=\"subject-name\">Marquages";
+		$r.="<br />publicitaires</h4>";
+		$r.="<svg class=\"icon-wrapper\" width=\"100%\" height=\"100%\" xmlns=\"http://www.w3.org/2000/svg\">";
+		$r.="<defs>";
+		$r.="<clipPath id=\"border-clip-4\">";
+		$r.="<rect class=\"border-1\" width=\"0\" height=\"0\" />";
+		$r.="</clipPath>";
+		$r.="</defs>";
+		$r.="<rect class=\"border-1\" clip-path=\"url(#border-clip-4)\" width=\"0\" height=\"0\" />";
+		$r.="<image class=\"icon\" xlink:href=\"public/img/icon-ads.svg\" width=\"0\" height=\"0\" />";
+		$r.="</svg>";
+		$r.="</div>";
+		$r.="</div>";
+		$r.="<div id=\"subjects-associated-btns\">";
+		$r.="<div class=\"field-graphism selected\">";
+		$r.="<a class=\"btn-graphism\" href=\"?" . AppController::GET_PARAM_NAME_VIEWPAGE . "=services\">";
+		$r.="<p class=\"value\">Graphisme</p>";
+		$r.="<div class=\"icon-right-arrow\"></div>";
+		$r.="</a>";
+		$r.="<a class=\"btn-logos\" href=\"services.html\">";
+		$r.="<p class=\"value\">Création de logos</p>";
+		$r.="<div class=\"icon-right-arrow\"></div>";
+		$r.="</a>";
+		$r.="<a class=\"btn-graphic-charters\" href=\"services.html\">";
+		$r.="<p class=\"value\">Chartes graphiques</p>";
+		$r.="<div class=\"icon-right-arrow\"></div>";
+		$r.="</a>";
+		$r.="</div>";
+		$r.="<div class=\"field-print\">";
+		$r.="<a class=\"btn-offset\" href=\"services.html\">";
+		$r.="<p class=\"value\">Impression offset</p>";
+		$r.="<div class=\"icon-right-arrow\"></div>";
+		$r.="</a>";
+		$r.="<a class=\"btn-digital\" href=\"services.html\">";
+		$r.="<p class=\"value\">Impression numérique</p>";
+		$r.="<div class=\"icon-right-arrow\"></div>";
+		$r.="</a>";
+		$r.="</div>";
+		$r.="<div class=\"field-web\">";
+		$r.="<a class=\"btn-websites\" href=\"services.html\">";
+		$r.="<p class=\"value\">Création de sites web</p>";
+		$r.="<div class=\"icon-right-arrow\"></div>";
+		$r.="</a>";
+		$r.="<a class=\"btn-seo\" href=\"services.html\">";
+		$r.="<p class=\"value\">Référencement SEO</p>";
+		$r.="<div class=\"icon-right-arrow\"></div>";
+		$r.="</a>";
+		$r.="<a class=\"btn-email\" href=\"services.html\">";
+		$r.="<p class=\"value\">Email marketting</p>";
+		$r.="<div class=\"icon-right-arrow\"></div>";
+		$r.="</a>";
+		$r.="</div>";
+		$r.="<div class=\"field-ads\">";
+		$r.="<a class=\"btn-offset\" href=\"services.html\">";
+		$r.="<p class=\"value\">Impression offset</p>";
+		$r.="<div class=\"icon-right-arrow\"></div>";
+		$r.="</a>";
+		$r.="<a class=\"btn-digital\" href=\"services.html\">";
+		$r.="<p class=\"value\">Impression numérique</p>";
+		$r.="<div class=\"icon-right-arrow\"></div>";
+		$r.="</a>";
+		$r.="</div>";
+		$r.="</div>";
+		$r.="</section>";
+		return $r;
+	}
+	public function buildContactSection(): string {
+		$r = "";
+		$r.="<section id=\"contact\">";
+		$r.="<h2>Contactez-nous</h2>";
+		$r.="<div class=\"wrapper\">";
+		$r.="<div class=\"form-container left\">";
+		$r.="<form id=\"contact-form\" action=\"?" . AppController::GET_PARAM_NAME_ACTION_REQUEST . "=" . AppController::ACTION_SEND_MAIL .
+			"&" . AppController::GET_PARAM_NAME_RESPONSE_REQUEST . "=" . AppController::ACTION_CHECK_MAIL_SENT .
+			"&hl=0\" method=\"POST\">";
+		$r.="<div class=\"form-group double\">";
+		$r.="<div class=\"form-group required\">";
+		$r.="<input type=\"text\" name=\"prenom\" placeholder=\"Votre prénom\" required />";
+		$r.="</div>";
+		$r.="<div class=\"form-group required\">";
+		$r.="<input type=\"text\" name=\"nom\" placeholder=\"Votre nom\" required />";
+		$r.="</div>";
+		$r.="</div>";
+		$r.="<div class=\"form-group required\">";
+		$r.="<input type=\"email\" name=\"email\" placeholder=\"Votre email professionnel\" required />";
+		$r.="</div>";
+		$r.="<div class=\"form-group\">";
+		$r.="<input type=\"text\" name=\"subject\" placeholder=\"Sujet du message\" />";
+		$r.="</div>";
+		$r.="<div class=\"form-group required\">";
+		$r.="<textarea name=\"message\" rows=\"4\" placeholder=\"Votre message\" required></textarea>";
+		$r.="</div>";
+		$r.="<div class=\"button-container\">";
+		$r.="<button type=\"submit\" class=\"btn-submit\">Envoyer</button>";
+		$r.="</div>";
+		$r.="</form>";
+		$r.="</div>";
+		$r.="<div class=\"info-container right\">";
+		$r.="<h3>Quelques chiffres</h3>";
+		$r.="<div class=\"stats\">";
+		$r.="<div class=\"item\">";
+		$r.="<img src=\"public/img/icon-3d-companies.png\" alt=\"Collaborateurs :\" />";
+		$r.="<span class=\"info\">";
+		$r.="<b>+17</b>";
+		$r.="<span>Entreprises</span>";
+		$r.="</span>";
+		$r.="</div>";
+		$r.="<div class=\"item\">";
+		$r.="<img src=\"public/img/icon-3d-budget.png\" alt=\"Finances :\" />";
+		$r.="<span class=\"info\">";
+		$r.="<b>0.5M€</b>";
+		$r.="<span>Budget géré</span>";
+		$r.="</span>";
+		$r.="</div>";
+		$r.="<div class=\"item\">";
+		$r.="<img src=\"public/img/icon-3d-ads.png\" alt=\"Produits :\" />";
+		$r.="<span class=\"info\">";
+		$r.="<b>+2k</b>";
+		$r.="<span>Publicités produites</span>";
+		$r.="</span>";
+		$r.="</div>";
+		$r.="</div>";
+		$r.="<h3>Nos coordonnées</h3>";
+		$r.="<div class=\"contact-details\">";
+		$r.="<div class=\"item\">";
+		$r.="<img src=\"public/img/icon-location.svg\" alt=\"Adresse :\" />";
+		$r.="<span>1 Rue de Chablis, 93000 Bobigny</span>";
+		$r.="</div>";
+		$r.="<div class=\"item\">";
+		$r.="<img src=\"public/img/icon-phone.svg\" alt=\"Téléphone :\" />";
+		$r.="<span>04 06 09 77 42</span>";
+		$r.="</div>";
+		$r.="<div class=\"item\">";
+		$r.="<img src=\"public/img/icon-mail.svg\" alt=\"Email :\" /> ";
+		$r.="<span>agency.oria@gmail.com</span>";
+		$r.="</div>";
+		$r.="<div class=\"item\">";
+		$r.="<img src=\"public/img/icon-clock.svg\" alt=\"Horaires :\" />";
+		$r.="<span>9:00 à 13:00 et 14:00 à 19:00 du Lundi au Vendredi</span>";
+		$r.="</div>";
+		$r.="</div>";
+		$r.="</div>";
+		$r.="</div>";
+		$r.="</section>";
+		return $r;
+	}
+
+}
+
+?>
