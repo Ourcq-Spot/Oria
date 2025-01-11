@@ -16,6 +16,8 @@ use view\agency\ProjectInRowListView;
  */
 class ViewServicesPage extends ViewGenericPage {
 
+	protected const CONTACT_SECTION_IN_PAGE = true;
+
 	/*protected $project;
 
 	public function __construct($project) {
@@ -53,33 +55,6 @@ class ViewServicesPage extends ViewGenericPage {
 	public function buildLandingSection(): string {
 		$r = "";
 		$r.="<section id=\"landing\">";
-
-		/*if (isset($_GET['id'])) {
-			$id = $_GET['id'];
-			$project = ProjectController::getProjectWithId($id);
-			if (isset($project)) {
-				//$projectView = new ProjectInRowListView(
-				//	$project
-				//);
-				
-				//var_dump($project);
-				$label = "[label non trouvé]";
-				if ((isset($project->label)) && ($project->label!="")) {
-					$label = $project->label;
-				}
-				$r.="<h1>";
-					$r.=$label;
-				$r.="</h1>";
-			} else {
-				$r.="<h1>";
-					$r.="projet n'existe pas";
-				$r.="</h1>";
-				
-				foreach (ProjectController::getProjects() as $project) {
-					$r.=new ProjectInRowListView($project);
-				}
-			}
-		}*/
 
 		$r.="<div class=\"wrapper\">";
 		$r.="<div class=\"content\">";
@@ -135,29 +110,6 @@ class ViewServicesPage extends ViewGenericPage {
 		foreach (BenefitController::getClientBenefits() as /*$i=>*/$benefit) {
 			$r.=new BenefitView($benefit);
 			$r.="<hr />";
-			/*
-			$catchphrase = '';
-			$description = '';
-			if (isset($benefits->catchphrase)) {
-				$catchphrase = $benefit->catchphrase; }
-			if (isset($benefits->shortDescription)) {
-				$description = $benefit->shortDescription; }
-			$r.="<div class=\"benefit row\">";
-			$r.="<div class=\"column\">";
-			$r.="<p class=\"num\">";
-			$r.=str_pad($i+1, 2, '0', STR_PAD_LEFT);
-			$r.="</p>";
-			$r.="<p class=\"catchphrase\">";
-			$r.=$catchphrase;
-			$r.="</p>";
-			$r.="</div>";
-			$r.="<div class=\"column\">";
-			$r.="<p class=\"description\">";
-			$r.=$description;
-			$r.="</p>";
-			$r.="</div>";
-			$r.="</div>";
-			*/
 		}
 		$r.="</div>";
 		$r.="</div>";
@@ -257,84 +209,6 @@ class ViewServicesPage extends ViewGenericPage {
 					$r.="</div>";
 				$r.="</div>";
 			$r.="</div>";
-		$r.="</section>";
-		return $r;
-	}
-	public function buildContactSection(): string {
-		$r = "";
-		$r.="<section id=\"contact\">";
-		$r.="<h2>Contactez-nous</h2>";
-		$r.="<div class=\"wrapper\">";
-		$r.="<div class=\"form-container left\">";
-		$r.="<form id=\"contact-form\" action=\"?req=1&res=0&hl=0\" method=\"POST\">";
-		$r.="<div class=\"form-group double\">";
-		$r.="<div class=\"form-group required\">";
-		$r.="<input type=\"text\" name=\"prenom\" placeholder=\"Votre prénom\" required />";
-		$r.="</div>";
-		$r.="<div class=\"form-group required\">";
-		$r.="<input type=\"text\" name=\"nom\" placeholder=\"Votre nom\" required />";
-		$r.="</div>";
-		$r.="</div>";
-		$r.="<div class=\"form-group required\">";
-		$r.="<input type=\"email\" name=\"email\" placeholder=\"Votre email professionnel\" required />";
-		$r.="</div>";
-		$r.="<div class=\"form-group\">";
-		$r.="<input type=\"text\" name=\"subject\" placeholder=\"Sujet du message\" />";
-		$r.="</div>";
-		$r.="<div class=\"form-group required\">";
-		$r.="<textarea name=\"message\" rows=\"4\" placeholder=\"Votre message\" required></textarea>";
-		$r.="</div>";
-		$r.="<div class=\"button-container\">";
-		$r.="<button type=\"submit\" class=\"btn-submit\">Envoyer</button>";
-		$r.="</div>";
-		$r.="</form>";
-		$r.="</div>";
-		$r.="<div class=\"info-container right\">";
-		$r.="<h3>Quelques chiffres</h3>";
-		$r.="<div class=\"stats\">";
-		$r.="<div class=\"item\">";
-		$r.="<img src=\"public/img/icon-3d-companies.png\" alt=\"Collaborateurs :\" />";
-		$r.="<span class=\"info\">";
-		$r.="<b>+17</b>";
-		$r.="<span>Entreprises</span>";
-		$r.="</span>";
-		$r.="</div>";
-		$r.="<div class=\"item\">";
-		$r.="<img src=\"public/img/icon-3d-budget.png\" alt=\"Finances :\" />";
-		$r.="<span class=\"info\">";
-		$r.="<b>0.5M€</b>";
-		$r.="<span>Budget géré</span>";
-		$r.="</span>";
-		$r.="</div>";
-		$r.="<div class=\"item\">";
-		$r.="<img src=\"public/img/icon-3d-ads.png\" alt=\"Produits :\" />";
-		$r.="<span class=\"info\">";
-		$r.="<b>+2k</b>";
-		$r.="<span>Publicités produites</span>";
-		$r.="</span>";
-		$r.="</div>";
-		$r.="</div>";
-		$r.="<h3>Nos coordonnées</h3>";
-		$r.="<div class=\"contact-details\">";
-		$r.="<div class=\"item\">";
-		$r.="<img src=\"public/img/icon-location.svg\" alt=\"Adresse :\" />";
-		$r.="<span>1 Rue de Chablis, 93000 Bobigny</span>";
-		$r.="</div>";
-		$r.="<div class=\"item\">";
-		$r.="<img src=\"public/img/icon-phone.svg\" alt=\"Téléphone :\" />";
-		$r.="<span>04 06 09 77 42</span>";
-		$r.="</div>";
-		$r.="<div class=\"item\">";
-		$r.="<img src=\"public/img/icon-mail.svg\" alt=\"Email :\" /> ";
-		$r.="<span>agency.oria@gmail.com</span>";
-		$r.="</div>";
-		$r.="<div class=\"item\">";
-		$r.="<img src=\"public/img/icon-clock.svg\" alt=\"Horaires :\" />";
-		$r.="<span>9:00 à 13:00 et 14:00 à 19:00 du Lundi au Vendredi</span>";
-		$r.="</div>";
-		$r.="</div>";
-		$r.="</div>";
-		$r.="</div>";
 		$r.="</section>";
 		return $r;
 	}
