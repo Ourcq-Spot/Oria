@@ -16,7 +16,7 @@ class ViewHomePage extends ViewGenericPage {
 
 	public function buildHeadContent(): string {
 		$r = parent::buildHeadContent();
-		$r.="<link rel=\"stylesheet\" href=\"public/css/index.css\" />";
+		$r.="<link rel=\"stylesheet\" href=\"public/css/vp-index.css\" />";
 		$r.="<script src=\"public/js/index_landing_fg_bg.js\"></script>";
 		$r.="<script src=\"public/js/index_landing_lettersHeadband.js\"></script>";
 		$r.="<script src=\"public/js/team_carrousel.js\"></script>";
@@ -30,7 +30,7 @@ class ViewHomePage extends ViewGenericPage {
 		$r = "";
 		$r.=$this->buildLandingSection();
 		$r.=$this->buildStorySection();
-		//$r.=$this->buildTeamSection();
+		//$r.=$this->buildTeamSection(); // TO DO: activate!!!
 		$r.=$this->buildProjectsSection();
 		$r.=$this->buildServicesSection();
 		$r.=$this->buildContactSection();
@@ -114,12 +114,12 @@ class ViewHomePage extends ViewGenericPage {
 		$r.="<p>";
 		$r.=$this->chooseStrLang([
 			'fr' => "Chez Oria, nous transformons chaque idée en une <strong>expérience digitale unique</strong>. Guidés par la <strong>créativité</strong>, l'<strong>innovation</strong> et l’excellence, nous créons des solutions interactives et immersives pour les <strong>marques ambitieuses</strong>. Avec une équipe de talents multidisciplinaires, nous combinons design, stratégie digitale et technologie de pointe pour donner vie à vos projets.",
-			'en' => "At Oria, we turn every idea into a unique digital experience. Guided by creativity, innovation and excellence, we create interactive and immersive solutions for ambitious brands. With a team of multidisciplinary talents, we combine design, digital strategy and cutting-edge technology to bring your projects to life."
+			'en' => "At Oria, we turn every idea into a <strong>unique digital experience</strong>. Guided by <strong>creativity</strong>, <strong>innovation</strong> and excellence, we create interactive and immersive solutions for <strong>ambitious brands</strong>. With a team of multidisciplinary talents, we combine design, digital strategy and cutting-edge technology to bring your projects to life."
 		]);
 		$r.="<br/>";
 		$r.=$this->chooseStrLang([
 			'fr' => "Notre mission ? Aller <strong>au-delà de l'ordinaire</strong> et créer des expériences captivantes.",
-			'en' => "Our mission? Going beyond the ordinary and creating captivating experiences."
+			'en' => "Our mission? Going <strong>beyond the ordinary</strong> and creating captivating experiences."
 		]);
 		$r.="</p>";
 		$r.="</div>";

@@ -135,6 +135,8 @@ section#contact .info-container .stats {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 section#contact .info-container .stats > .item {
     display: flex;
@@ -168,11 +170,6 @@ section#contact .info-container .contact-details > .item > img {
     width: 1.5em;
 }
 
-@media screen and (max-width: 768px) {
-    section#contact .form-container {
-        flex-direction: column;
-    }
-}
 
 
 
@@ -182,4 +179,24 @@ section#contact .form-group:not(.double) {
     padding: .05em;
     border-radius: .33em;
     background: var(--gradient-0);
+}
+
+
+
+
+
+@media screen and (max-width: 700px) {
+    section#contact .wrapper {
+        flex-direction: column;
+        gap: calc(1em + 4vw);
+        margin-bottom: 1em;
+    }
+    section#contact .info-container .stats {
+        padding-bottom: .66em;
+    }
+}
+@media screen and (max-width: 470px) {
+    section#contact .info-container .stats .item {
+        max-width: 47%;
+    }
 }

@@ -31,7 +31,7 @@ class ViewProjectPage extends ViewGenericPage {
 
 	public function buildHeadContent(): string {
 		$r = parent::buildHeadContent();
-		$r.="<link rel=\"stylesheet\" href=\"public/css/index.css\" />";
+		$r.="<link rel=\"stylesheet\" href=\"public/css/vp-index.css\" />";
 		/*$r.="<script src=\"public/js/index_landing_fg_bg.js\"></script>";
 		$r.="<script src=\"public/js/index_landing_lettersHeadband.js\"></script>";
 		$r.="<script src=\"public/js/team_carrousel.js\"></script>";
@@ -76,12 +76,34 @@ class ViewProjectPage extends ViewGenericPage {
 
         $r .= "<main>";*/
         $r .= "<section class=\"project-details\">";
-        $r .= "<h2>" . htmlspecialchars($project['label']) . "</h2>";
-        $r .= "<p><strong>Type:</strong> " . htmlspecialchars($project['type']) . "</p>";
-        $r .= "<img src=\"public/images/" . htmlspecialchars($project['iconFileName']) . "\" alt=\"" . htmlspecialchars($project['label']) . " logo\">";
-        $r .= "<img src=\"public/images/" . htmlspecialchars($project['mockupFileName']) . "\" alt=\"" . htmlspecialchars($project['label']) . " mockup\">";
-        $r .= "<p>" . nl2br(htmlspecialchars($project['shortDescription'])) . "</p>";
+        $label = '[]';
+        if ((isset($project['label'])) && (is_string($project['label']))) {
+            $label = htmlspecialchars($project['label']);
+        }
+        $type = '[]';
+        if ((isset($project['type_' . $this->getLanguage()])) && (is_string($project['type_' . $this->getLanguage()]))) {
+            $type = htmlspecialchars($project['type_' . $this->getLanguage()]);
+        }
+        $iconFileName = '[]';
+        if ((isset($project['iconFileName'])) && (is_string($project['iconFileName']))) {
+            $iconFileName = htmlspecialchars($project['iconFileName']);
+        }
+        $mockupFileName = '[]';
+        if ((isset($project['mockupFileName'])) && (is_string($project['mockupFileName']))) {
+            $mockupFileName = htmlspecialchars($project['mockupFileName']);
+        }
+        $shortDescription = '[]';
+        if ((isset($project['shortDescription_' . $this->getLanguage()])) && (is_string($project['shortDescription_' . $this->getLanguage()]))) {
+            $shortDescription = nl2br(htmlspecialchars($project['shortDescription_' . $this->getLanguage()]));
+        }
+        $r .= "<h2>" . $label . "</h2>";
+        $r .= "<p><strong>Type:</strong>$type</p>";
+        $r .= "<img src=\"public/img/$iconFileName\" alt=\"$label logo\" />";
+        $r .= "<img src=\"public/img/$mockupFileName\" alt=\"$label mockup\" />";
+        $r .= "<p>$shortDescription</p>";
         $r .= "</section>";
+        //var_export($iconFileName);
+        //var_export("logo-skyworth.svg");
         /*$r .= "</main>";
 
         $r .= "</body>";

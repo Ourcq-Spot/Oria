@@ -1,15 +1,10 @@
-@import "./fonts.css";
-@import "./bodyHeaderFooter.css";
-@import "./common.css";
+/* @import "./generic.css"; */
 @import "./section-team.css";
 @import "./section-projets.css";
 @import "./section-services.css";
 @import "./section-contact.css";
 
-main > section:not(#landing){
-  margin: 0 10.75%;
-  margin-bottom: 3.5em;
-}
+@import './rwd-vp-index.css';
 
 section#landing {
   position: relative;

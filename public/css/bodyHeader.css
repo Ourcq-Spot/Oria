@@ -1,3 +1,5 @@
+@import './rwd-bodyHeader.css';
+
 body > header {
 	display: flex;
 	flex-direction: row;
@@ -13,6 +15,7 @@ body > header {
 	color: white;
 
 	font-family: Roboto;
+	z-index: 110 !important;
 }
 
 body > header > a {

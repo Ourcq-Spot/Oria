@@ -6,6 +6,10 @@ function init() {
   const prevButton = document.querySelector('.carrousel-btn.prev');
   const nextButton = document.querySelector('.carrousel-btn.next');
 
+  if ((!track) || (!prevButton) || (!nextButton)) {
+    return;
+  }
+  
   let currentSlide = 0; 
 
   nextButton.addEventListener('click', () => {

@@ -17,7 +17,7 @@ class ViewGenericPage extends ViewHtml {
 
 	public function buildLogoOria(): string {
 		$r = "";
-		$r.="<a href=\".\">";
+		$r.="<a href=\".?#\">";
 		$r.="<img class=\"logo-oria\" src=\"public/img/logo-oria.svg\" alt=\"ORIA\" />";
 		$r.="</a>";
 		return $r;
@@ -27,6 +27,8 @@ class ViewGenericPage extends ViewHtml {
 		$r = parent::buildHeadContent();
 		$r.="<meta name=\"description\" content=\"" . $this->metaDescription . "\" />";
 		$r.="<meta name=\"keywords\" content=\"" . $this->getMetaKeywords() . "\" />";
+		$r.="<link rel=\"stylesheet\" href=\"public/css/vp-generic.css\" />";
+		$r.="<script src=\"public/js/website_burger_menu.js\"></script>";
 		return $r;
 	}
 
@@ -35,6 +37,7 @@ class ViewGenericPage extends ViewHtml {
 		$r.=$this->buildHeader();
 		$r.=$this->buildMain();
 		$r.=$this->buildFooter();
+		$r.=$this->buildDisablingLayer();
 		return $r;
 	}
 	public function buildHeader(): string {
@@ -100,8 +103,18 @@ class ViewGenericPage extends ViewHtml {
     $r.="<a id=\"lang-selector\" href=\"?" . $strGETParams . "\">" . strtoupper($this->getLanguage()) . "</a>";
 		//$r.="<a class=\"hoverable-btn-1\" href=\"contact.html\">";
 		$r.="<a class=\"hoverable-btn-1\" href=\"#contact\">";
-		$r.="<div class=\"btn-contact\">Contact</div>";
+		$r.="<div class=\"btn-contact\">";
+		$r.="Contact";
+		$r.="</div>";
 		$r.="</a>";
+		$r.="<div id=\"websiteMenu-btn\">";
+			$r.="<svg viewBox=\"0 0 100 100\">";
+				$r.="<path d=\"M0, 10 Q50, 10 100, 10\"></path>";
+				$r.="<path d=\"M0, 50 Q50, 50 100, 50\"></path>";
+				$r.="<path d=\"M0, 90 Q50, 90 100, 90\"></path>";
+				//$r.="<path d=\"M0, 80 Q50, 80 100, 80\"></path>";
+			$r.="</svg>";
+		$r.="</div>";
 		$r.="</div>";
 
 		return $r;
@@ -231,6 +244,13 @@ class ViewGenericPage extends ViewHtml {
 		$r.="</ul>";
 		$r.="</div>";
 		$r.="</footer>";
+		return $r;
+	}
+
+	public function buildDisablingLayer(): string {
+		$r = "";
+		$r.="<div class=\"disablingLayer\">";
+    $r.="</div>";
 		return $r;
 	}
 	

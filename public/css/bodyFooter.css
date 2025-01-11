@@ -1,9 +1,5 @@
-/* Footer */
-/*
-special-footer,
-.footer {
-  width: 100%;
-}*/
+@import './rwd-bodyFooter.css';
+
 body > footer {
   display: flex;
   flex-direction: column;
@@ -142,13 +138,17 @@ body > footer .top-row .column .item.icon-before.location::before {
 }
 
 /* Icônes des réseaux sociaux */
+body > footer .social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
 body > footer .social-icons a {
   color: white;
   text-decoration: none;
   font-size: 1.33em;
-}
-body > footer .social-icons a:not(:last-child) {
-  margin-right: .75em;
 }
 body > footer .social-icons img {
   width: 1em;

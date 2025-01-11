@@ -147,28 +147,8 @@ section#projects.preview .project-card .btn-more:hover {
 }
 
 
-@media (max-width: 1110px) {
-  
-}
-
-
-/*
-@media (max-width: 768px) {
-  #project-section {
-      width: 95%; 
-      padding: 5px; 
-      transform: scale(1);
+@media (max-width: 700px) {
+  section#projects.preview .project-card {
+    font-size: calc(.75em + .85vw);
   }
 }
-
-@media (max-width: 480px) {
-
-}
-
-@media (max-width: 480px) {
-  section#projects.preview .btn-more {
-      font-size: 12px; 
-      text-align: center; 
-  }
-}
-*/
