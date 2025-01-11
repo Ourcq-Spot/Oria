@@ -3,16 +3,8 @@
 namespace view\agency;
 
 use controller\AppController;
-use model\agency\Project;
-use view\View;
 
-class ProjectInRowListView extends View {
-
-  protected $project;
-
-  public function __construct(Project $project) {
-    $this->project = $project;
-  }
+class ProjectInRowListView extends ProjectView {
 
   public function __toString(): string {
     $r = "";
@@ -25,8 +17,9 @@ class ProjectInRowListView extends View {
       $id = $this->project->id; }
     if (isset($this->project->label)) {
       $label = $this->project->label; }
-    if (isset($this->project->type)) {
-      $type = $this->project->type; }
+    $typeKey = 'type_' . $this->getLanguage();
+    if (isset($this->project->$typeKey)) {
+      $type = $this->project->$typeKey; }
     if (isset($this->project->iconFileName)) {
       $iconFileName = $this->project->iconFileName; }
     if (isset($this->project->mockupFileName)) {

@@ -3,12 +3,17 @@
 namespace view;
 
 use controller\AppController;
+use model\data\DataManager;
 
 /**
  * A View object that builds the base of the website's HMI as text in HTML format.
  * Automatically builds every needed tag for a generic page.
  */
 class ViewGenericPage extends ViewHtml {
+
+	protected const HREF_VALUE_VIEWPAGE_HOME =  "?";
+	protected const HREF_VALUE_VIEWPAGE_SERVICES =  "?" . AppController::GET_PARAM_NAME_VIEWPAGE . "=services";
+	protected const HREF_VALUE_ANCHOR_CONTACT =  "#contact";
 
 	public function buildLogoOria(): string {
 		$r = "";
@@ -22,7 +27,6 @@ class ViewGenericPage extends ViewHtml {
 		$r = parent::buildHeadContent();
 		$r.="<meta name=\"description\" content=\"" . $this->metaDescription . "\" />";
 		$r.="<meta name=\"keywords\" content=\"" . $this->getMetaKeywords() . "\" />";
-		$r.="";
 		return $r;
 	}
 
@@ -45,40 +49,31 @@ class ViewGenericPage extends ViewHtml {
     $r.=$this->buildLogoOria();
     $r.="<nav class=\"websiteMenu\">";
     $r.="<ul class=\"row-menu\">";
-		$menuItems = [
-			[
-				'fr' => 'Accueil',
-				'en' => 'Home',
-				'href' => "."
-			], [
-				'fr' => 'Histoire',
-				'en' => 'History',
-				'href' => "?#agencyStory"
-			], [
-				'fr' => 'Équipe',
-				'en' => 'Team',
-				'href' => "?#team"
-			], [
-				'fr' => 'Projets',
-				'en' => 'Projects',
-				'href' => "?#projects"
-			], [
-				'fr' => 'Services',
-				'en' => 'Services',
-				'href' => "?" . AppController::GET_PARAM_NAME_VIEWPAGE . "=services"
-			]
-		];
+		$menuItems = DataManager::loadData(
+			DataManager::PATH_TO_JSON_FOLDER . 'menuItems.json'
+		);
 		foreach ($menuItems as $menuItem) {
-			$itemLabel = '[]';
-			$itemHref = '#';
-			if (isset($menuItem[$this->getLanguage()])) {
-				$itemLabel=$menuItem[$this->getLanguage()]; }
-			if (isset($menuItem['href'])) {
-				$itemHref=$menuItem['href']; }
+			// Prepare data & keys
+			$itemLabelKey = 'label-' . $this->getLanguage();
+			$itemHrefKey = 'href';
+			$itemLabelValue = '[]';
+			$itemHrefValue = '#';
+			if (isset($menuItem->$itemLabelKey)) {
+				$itemLabelValue = $menuItem->$itemLabelKey; }
+			if (isset($menuItem->$itemHrefKey)) {
+				$itemHrefValue = $menuItem->$itemHrefKey; }
+
+			// Special rules
+			if (isset($menuItem->id) && ($menuItem->id==4)) {
+				$itemHrefValue = $this::HREF_VALUE_VIEWPAGE_SERVICES;
+			}
+
+			//
+			// Item View
 			$r.="<li class=\"decoratedItem-1\">";
-			$r.="<a class=\"decorationContainer\" href=\"$itemHref\">";
+			$r.="<a class=\"decorationContainer\" href=\"$itemHrefValue\">";
 			$r.="<span>";
-			$r.=$itemLabel;
+			$r.=$itemLabelValue;
 			$r.="</span>";
 			$r.="<div class=\"itemDecoration\">";
 			$r.="</div>";
@@ -89,17 +84,19 @@ class ViewGenericPage extends ViewHtml {
     $r.="</nav>";
 
     $r.="<div>";
-		$targetLangCode = 'en';
-		if ($this->getLanguage() == 'en') {
-			$targetLangCode = 'fr';
-		}
+		
+		$r.=$this->chooseStrLang([
+			'fr' => "",
+			'en' => ""
+		]);
+		
 		$strGETParams = '';
 		foreach ($_GET as $key=>$value) {
 			if ($key!='lang') {
 				$strGETParams.=$key . "=" .$value . "&";
 			}
 		}
-		$strGETParams.="lang=" . $targetLangCode;
+		$strGETParams.="lang=" . $this->getOtherLanguage();
     $r.="<a id=\"lang-selector\" href=\"?" . $strGETParams . "\">" . strtoupper($this->getLanguage()) . "</a>";
 		//$r.="<a class=\"hoverable-btn-1\" href=\"contact.html\">";
 		$r.="<a class=\"hoverable-btn-1\" href=\"#contact\">";
@@ -128,7 +125,14 @@ class ViewGenericPage extends ViewHtml {
 		$r.="<div>";
 		$r.="<div class=\"columns\">";
 		$r.="<div class=\"column\">";
-		$r.="<h4>Suivez-nous</h4>";
+		$r.="<h4>";
+		
+		$r.=$this->chooseStrLang([
+			'fr' => "Suivez-nous",
+			'en' => "Follow us"
+		]);
+
+		$r.="</h4>";
 		$r.="<div class=\"social-icons\">";
 		$r.="<a href=\"#\">";
 		$r.="<img src=\"public/img/icon-facebook.svg\" alt=\"Facebook\" />";
@@ -145,14 +149,37 @@ class ViewGenericPage extends ViewHtml {
 		$r.="</div>";
 		$r.="</div>";
 		$r.="<div class=\"column\">";
-		$r.="<h4>Nos Services</h4>";
-		$r.="<a class=\"item\" href=\"#\">Marquages publicitaires</a>";
-		$r.="<a class=\"item\" href=\"#\">Services web</a>";
-		$r.="<a class=\"item\" href=\"#\">Graphisme</a>";
-		$r.="<a class=\"item\" href=\"#\">Impression</a>";
+		$r.="<h4>";
+
+		$r.=$this->chooseStrLang([
+			'fr' => "Nos services",
+			'en' => "Our services"
+		]);
+
+		$r.="</h4>";
+
+		$servicesTypesTitles = DataManager::loadData(
+			DataManager::PATH_TO_JSON_FOLDER . 'servicesTypes.json'
+		);
+		foreach ($servicesTypesTitles as $serviceTitle) {
+			$label = '[]';
+			$labelKey = 'label-' . $this->getLanguage();
+			if (isset($serviceTitle->$labelKey)) {
+				$label = $serviceTitle->$labelKey;
+			}
+			$r.="<a class=\"item\" href=\"" . $this::HREF_VALUE_VIEWPAGE_SERVICES . "\">" . $label . "</a>";
+		}
+
 		$r.="</div>";
 		$r.="<div class=\"column\">";
-		$r.="<h4>Nous contacter</h4>";
+		$r.="<h4>";
+		
+		$r.=$this->chooseStrLang([
+			'fr' => "Nous contacter",
+			'en' => "Contact us"
+		]);
+
+		$r.="</h4>";
 		$r.="<a class=\"item icon-before email\" href=\"mailto:agency.oria@gmail.com\">agency.oria@gmail.com</a>";
 		$r.="<a class=\"item icon-before phone\" href=\"#\">04 06 08 77 42</a>";
 		$r.="<a class=\"item icon-before location\" href=\"#\">1 Rue de Chablis, 93000 Bobigny</a>";
@@ -161,26 +188,46 @@ class ViewGenericPage extends ViewHtml {
 		$r.="</div>";
 		$r.="</div>";
 		$r.="<hr />";
+
 		$r.="<div class=\"bottom-row\">";
 		$r.="<ul class=\"row-menu no-padding\">";
-		$r.="<li><a class=\"decoratedItem-1 decorationContainer white\" href=\"#\">";
-		$r.="<span>Politique de confidentialité</span>";
-		$r.="<div class=\"itemDecoration\"></div></a></li>";
-		$r.="<li><a class=\"decoratedItem-1 decorationContainer white\" href=\"#\">";
-		$r.="<span>Cookies</span>";
-		$r.="<div class=\"itemDecoration\"></div></a></li>";
-		$r.="<li><a class=\"decoratedItem-1 decorationContainer white\" href=\"mentionslegales.html\">";
-		$r.="<span>Mentions légales</span>";
-		$r.="<div class=\"itemDecoration\"></div></a></li>";
+
+		$servicesTypesTitles = DataManager::loadData(
+			DataManager::PATH_TO_JSON_FOLDER . 'footerBottomItems.json'
+		);
+		foreach ($servicesTypesTitles as $serviceTitle) {
+			$label = '[]';
+			$href = '#';
+			$labelKey = 'label-' . $this->getLanguage();
+			if (isset($serviceTitle->$labelKey)) {
+				$label = $serviceTitle->$labelKey;
+			}
+			if (isset($serviceTitle->href)) {
+				$href = $serviceTitle->href;
+			}
+
+			// Special rules
+			if (isset($serviceTitle->id) && ($serviceTitle->id<=2)) {
+				$href = "?" . AppController::GET_PARAM_NAME_VIEWPAGE . "=legal" . $href;
+			}
+			
+			$r.="<li>";
+				$r.="<a class=\"decoratedItem-1 decorationContainer white\" href=\"$href\">";
+					$r.="<span>";
+						$r.="$label";
+					$r.="</span>";
+					$r.="<div class=\"itemDecoration\">";
+					$r.="</div>";
+				$r.="</a>";
+			$r.="</li>";
+		}
 		/*$r.="<li><a class=\"decoratedItem-1 decorationContainer white\" href=\"#\">";
 		$r.="<span>Aide</span>";
 		$r.="<div class=\"itemDecoration\"></div></a></li>";
 		$r.="<li><a class=\"decoratedItem-1 decorationContainer white\" href=\"#\">";
 		$r.="<span>FAQ</span>";
 		$r.="<div class=\"itemDecoration\"></div></a></li>";*/
-		$r.="<li><a class=\"decoratedItem-1 decorationContainer white\" href=\"#\">";
-		$r.="<span>Contact</span>";
-		$r.="<div class=\"itemDecoration\"></div></a></li>";
+
 		$r.="</ul>";
 		$r.="</div>";
 		$r.="</footer>";

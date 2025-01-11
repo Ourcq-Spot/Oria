@@ -21,11 +21,14 @@ class ProjectController extends Controller {
     return $project;
   }
   
-  public static function getProjects() : array {
+  public static function getProjects(int $limit=null) : array {
     $projects = [];
     $projectsData = self::loadData();
-    foreach ($projectsData as $projectData) {
+    foreach ($projectsData as $key=>$projectData) {
       $projects[] = new Project($projectData);
+      if ((isset($limit)) && ($key >= $limit-1)) {
+        break;
+      }
     }
     return $projects;
   }

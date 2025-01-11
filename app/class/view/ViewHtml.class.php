@@ -156,7 +156,7 @@ class ViewHtml extends View{
 	 * 
 	 * @return string
 	 */
-	final public function __toString(): string {
+	public function __toString(): string {
 		$r="";
 		$r.=Constants::XML_TAG_DOCTYPE_HTML_STR_FULL;
 		if (self::PRETTY_PRINT) {

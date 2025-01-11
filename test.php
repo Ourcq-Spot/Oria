@@ -48,4 +48,8 @@ if (isset($_GET['id'])) {
 }
 //echo "</pre>";
 
+
+//$maVue = new ViewProjectPage();
+//echo $maVue;
+
 ?>

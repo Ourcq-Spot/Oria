@@ -21,6 +21,25 @@ class View{
 		}
 	}
 
+	public function getOtherLanguage(): string{
+		switch ($this->getLanguage()) {
+			case 'fr':
+				return 'en';
+				break;
+			default:
+				return 'fr';
+				break;
+		}
+	}
+
+	public function chooseStrLang(array $data) : string {
+		$str = "";
+		if ((isset($data[$this->getLanguage()])) && (is_string($data[$this->getLanguage()]))) {
+			$str = $data[$this->getLanguage()];
+		}
+		return $str;
+	}
+
 	/**
 	 * Accesses the HMI/display as a string.
 	 * 	(purpose of a View object)

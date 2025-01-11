@@ -24,9 +24,11 @@ function register(){
  * @return void
  */
 function autoload($class){
-	$class = str_replace("\\", "/", $class);
+	//$class = str_replace("\\", "/", $class);
 	$pathToClassFile = ROOT . "/app/class/$class.class.php";
+	$pathToClassFile = str_replace("\\", "/", $pathToClassFile);
 	if(file_exists($pathToClassFile)){
+		//var_dump($pathToClassFile);
 		require($pathToClassFile);
 	}
 }
