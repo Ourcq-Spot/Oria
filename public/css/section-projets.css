@@ -1,7 +1,3 @@
-section#projects:target {
-  scroll-margin: calc(5vh + var(--header-safe-area-height, 3.33em));
-}
-
 section#projects.preview {
   --seemore-line-height: 1em;
   display: flex;

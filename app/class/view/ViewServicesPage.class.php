@@ -28,7 +28,7 @@ class ViewServicesPage extends ViewGenericPage {
 
 	public function buildHeadContent(): string {
 		$r = parent::buildHeadContent();
-		$r.="<link rel=\"stylesheet\" href=\"public/css/services.css\" />";
+		$r.="<link rel=\"stylesheet\" href=\"public/css/vp-services.css\" />";
 		$r.="<script src=\"public/js/services_processus_timeline.js\"></script>";
 		$r.="<script src=\"public/js/contact_submit_ajax.js\"></script>";
 		/*$r.="<script src=\"public/js/index_landing_fg_bg.js\"></script>";
