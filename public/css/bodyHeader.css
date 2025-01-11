@@ -7,10 +7,10 @@ body > header {
 
 	/* position: sticky; */
 	position: fixed;
-	top: var(--header-yoffset, .33rem);
+	top: var(--header-yoffset, .33em);
 	min-width: 80%;
 
-	border-radius: 1rem;
+	border-radius: 1em;
 	background-color: var(--color-1);
 	color: white;
 
@@ -19,13 +19,15 @@ body > header {
 }
 
 body > header > a {
-	min-width: 10rem;
-	height: var(--header-height, 3.5rem);
+	display: flex;
+	align-items: center;
+	min-width: 10em;
+	height: var(--header-height, 3.5em);
 }
 body > header .logo-oria {
-	max-width: 10rem;
-	max-height: 2.5rem;
-	padding: .5rem;
+	max-width: 10em;
+	max-height: 2.5em;
+	padding: .5em;
 }
 
 body > header .websiteMenu {
@@ -35,7 +37,7 @@ body > header .websiteMenu {
 }
 
 body > header .websiteMenu > ul {
-	gap: 2rem;
+	gap: 2em;
 }
 /*body > header .websiteMenu .itemDecoration {
 	--decoration-height: .1em;
@@ -51,9 +53,9 @@ body > header > :last-child {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	gap: 1rem;
+	gap: 1em;
 
-	padding: .5rem 1.5rem;
+	padding: .5em 1.5em;
 }
 
 
@@ -63,7 +65,7 @@ body > header #lang-selector {
 	align-items: center;
 	gap: .4em;
 
-	font-size: .8rem;
+	font-size: .8em;
 	color: var(--color-0, white);
 	text-decoration: none;
 	cursor: pointer;

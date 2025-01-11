@@ -375,14 +375,14 @@ class ViewHomePage extends ViewGenericPage {
 						$r.="<div class=\"form-group double\">";
 							$placeholder=$this->chooseStrLang([
 								'fr' => "Votre prénom",
-								'en' => "Your firstname"
+								'en' => "Firstname"
 							]);
 							$r.="<div class=\"form-group required\">";
 								$r.="<input type=\"text\" name=\"prenom\" placeholder=\"$placeholder\" required />";
 							$r.="</div>";
 							$placeholder=$this->chooseStrLang([
 								'fr' => "Votre nom",
-								'en' => "Your lastname"
+								'en' => "Lastname"
 							]);
 							$r.="<div class=\"form-group required\">";
 								$r.="<input type=\"text\" name=\"nom\" placeholder=\"$placeholder\" required />";

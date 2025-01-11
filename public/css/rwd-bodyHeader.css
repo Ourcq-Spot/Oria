@@ -1,3 +1,8 @@
+/* WARNING: ":has()", since not absolutely compatible everywhere... but whatever */
+html:has(body[data-websitemenu-status="opened"]) {
+  overflow-y: hidden !important;
+}
+
 body > .disablingLayer {
   position: absolute;
   width: 100%;
@@ -51,7 +56,7 @@ body[data-websitemenu-status="opened"] > header #websiteMenu-btn path:nth-child(
 
 @media screen and (max-width: 825px) {
   body > header > a {
-    min-width: 7rem !important;
+    min-width: 7em !important;
   }
   body > header ul.row-menu {
     padding-left: 1.33em !important;
@@ -64,6 +69,9 @@ body[data-websitemenu-status="opened"] > header #websiteMenu-btn path:nth-child(
     border-radius: 0 !important;
     top: 0 !important;
     padding: calc(var(--header-yoffset, .33rem) *2) 0;
+  }
+  body > header > :last-child {
+    padding-left: 0 !important;
   }
   body > header #websiteMenu-btn {
     display: block;
@@ -112,3 +120,26 @@ body[data-websitemenu-status="opened"] > header #websiteMenu-btn path:nth-child(
   }*/
 }
 
+
+@media screen and (max-width: 700px) and (max-height: 450px) {
+  body[data-websitemenu-status="opened"] > header nav.websiteMenu ul.row-menu {
+    --menu-padding-v: 1.5em !important;
+    gap: 3.33vh !important;
+  }
+}
+
+
+
+@media screen and (min-width: 281px) and (max-width: 333px) {
+  body > header {
+    font-size: 4.75vw !important;
+  }
+}
+@media screen and (max-width: 280px) {
+  body > header > div > a.hoverable-btn-1 {
+    display: none;
+  }
+  body > header {
+    font-size: 6.66vw !important;
+  }
+}
