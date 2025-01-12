@@ -35,7 +35,11 @@
     flex-direction: column !important;
   }
   section#agencyStory > .timeline {
-    max-width: 66% !important;
+    max-width: calc(3.33em + 60%) !important;
+    max-height: calc(5em + 75vw) !important;
+  }
+  section#agencyStory > .timeline img {
+    padding: calc(.25em + 5vw) 0em !important;
   }
 }
 @media screen and (max-width: 625px) {
@@ -46,11 +50,23 @@
   section#landing > .content {
     max-width: 75% !important;
   }
+  section#agencyStory > .timeline {
+    max-width: 100% !important;
+  }
 }
-@media screen and (max-width: 500px) {
-  /*section#landing {
-    aspect-ratio: .66 / 1 !important;
-  }*/
+@media screen and (max-width: 500px) and (min-width: 350px) {
+  section#agencyStory #keyNumbers {
+    padding: .25em calc(.5em + 4vw) !important;
+    padding-bottom: 1.125em !important;
+
+    font-size: calc(.15em + 3vw);
+  }
+  section#agencyStory #keyNumbers > *:first-child {
+    margin-top: .85em;
+  }
+  section#agencyStory #keyNumbers .listedNumbers {
+    gap: calc(.25em + 1vw) !important;
+  }
 }
 @media screen and (max-width: 425px) {
   /*section#landing {
@@ -72,6 +88,24 @@
   }
   section#landing > .content h1 {
     font-size: 2.66em !important;
+  }
+
+  /*
+  section#agencyStory #keyNumbers {
+    padding: .25em calc(.5em + 4vw) !important;
+    padding-bottom: 1.125em !important;
+
+    font-size: calc(.15em + 3vw);
+  }
+  section#agencyStory #keyNumbers > *:first-child {
+    margin-top: .85em;
+  }
+  section#agencyStory #keyNumbers .listedNumbers {
+    gap: calc(.25em + 1vw) !important;
+  }*/
+  
+  section#agencyStory #keyNumbers .listedNumbers {
+    flex-wrap: wrap !important;
   }
 }
 

@@ -386,7 +386,7 @@ section#agencyStory section#keyNumbers .listedNumbers {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 2em;
+  gap: 1em 2em;
 
   padding-right: calc(8% + 5vw);
 }

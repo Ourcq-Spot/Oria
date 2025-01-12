@@ -88,39 +88,32 @@ class ViewGenericPage extends ViewHtml {
     $r.="</ul>";
     $r.="</nav>";
 
-    $r.="<div>";
-		
-		$r.=$this->chooseStrLang([
-			'fr' => "",
-			'en' => ""
-		]);
-		
-		$strGETParams = '';
-		foreach ($_GET as $key=>$value) {
-			if ($key!='lang') {
-				$strGETParams.=$key . "=" .$value . "&";
+    $r.="<div>";			
+			$strGETParams = '';
+			foreach ($_GET as $key=>$value) {
+				if ($key!='lang') {
+					$strGETParams.=$key . "=" .$value . "&";
+				}
 			}
-		}
-		$strGETParams.="lang=" . $this->getOtherLanguage();
-    $r.="<a id=\"lang-selector\" href=\"?" . $strGETParams . "\">" . strtoupper($this->getLanguage()) . "</a>";
-		//$r.="<a class=\"hoverable-btn-1\" href=\"contact.html\">";
-		$r.="<a class=\"hoverable-btn-1\" href=\"";
-		if (!($this::CONTACT_SECTION_IN_PAGE)) {
-			$r.=$this::HREF_VALUE_VIEWPAGE_HOME;
-		}
-		$r.="#contact\">";
-		$r.="<div class=\"btn-contact\">";
-		$r.="Contact";
-		$r.="</div>";
-		$r.="</a>";
-		$r.="<div id=\"websiteMenu-btn\">";
-			$r.="<svg viewBox=\"0 0 100 100\">";
-				$r.="<path d=\"M0, 10 Q50, 10 100, 10\"></path>";
-				$r.="<path d=\"M0, 50 Q50, 50 100, 50\"></path>";
-				$r.="<path d=\"M0, 90 Q50, 90 100, 90\"></path>";
-				//$r.="<path d=\"M0, 80 Q50, 80 100, 80\"></path>";
-			$r.="</svg>";
-		$r.="</div>";
+			$strGETParams.="lang=" . $this->getOtherLanguage();
+			$r.="<a id=\"lang-selector\" href=\"?" . $strGETParams . "\">" . strtoupper($this->getLanguage()) . "</a>";
+			//$r.="<a class=\"hoverable-btn-1\" href=\"contact.html\">";
+			$r.="<a class=\"hoverable-btn-1\" href=\"";
+			if (!($this::CONTACT_SECTION_IN_PAGE)) {
+				$r.=$this::HREF_VALUE_VIEWPAGE_HOME;
+			}
+			$r.="#contact\">";
+				$r.="<div class=\"btn-contact\">";
+					$r.="Contact";
+				$r.="</div>";
+			$r.="</a>";
+			$r.="<div id=\"websiteMenu-btn\">";
+				$r.="<svg viewBox=\"0 0 100 100\">";
+					$r.="<path d=\"M0, 10 Q50, 10 100, 10\"></path>";
+					$r.="<path d=\"M0, 50 Q50, 50 100, 50\"></path>";
+					$r.="<path d=\"M0, 90 Q50, 90 100, 90\"></path>";
+				$r.="</svg>";
+			$r.="</div>";
 		$r.="</div>";
 
 		return $r;

@@ -31,7 +31,7 @@ class ViewHomePage extends ViewGenericPage {
 		$r = "";
 		$r.=$this->buildLandingSection();
 		$r.=$this->buildStorySection();
-		//$r.=$this->buildTeamSection(); // TO DO: activate!!!
+		$r.=$this->buildTeamSection(); // TO DO: activate!!!
 		$r.=$this->buildProjectsSection();
 		$r.=$this->buildServicesSection();
 		$r.=$this->buildContactSection();
@@ -195,33 +195,36 @@ class ViewHomePage extends ViewGenericPage {
 					'en' => "Discover the dream team"
 				]);
 			$r.="</h2>";
+			$lang = $this->getLanguage();
 			$r.="<div class=\"carrousel\">";
 				$r.="<div class=\"carrousel-track\">";
 					$r.="<div class=\"slide1\">";
-						$r.="<img src=\"public/img/team-card-adam.webp\" alt=\"collaborator 1\">";
-						$r.="<img src=\"public/img/team-card-cyrielle.webp\" alt=\"collaborator 2\">";
-						$r.="<img src=\"public/img/team-card-kellya.webp\" alt=\"collaborator 3\">";
-						$r.="<img src=\"public/img/team-card-david.webp\" alt=\"collaborator 4\">";
+						$r.="<img src=\"public/img/team-card-adam-$lang.webp\" alt=\"Adam Sansone\">";
+						$r.="<img src=\"public/img/team-card-cyrielle-$lang.webp\" alt=\"Cyrielle Carvalheiro\">";
+						$r.="<img src=\"public/img/team-card-kellya-$lang.webp\" alt=\"Kellya Soulé\">";
+						$r.="<img src=\"public/img/team-card-david-$lang.webp\" alt=\"David Goncalves\">";
 					$r.="</div>";
 					$r.="<div class=\"slide2\">";
-						$r.="<img src=\"public/img/team-card-juan.webp\" alt=\"collaborator 5\">";
-						$r.="<img src=\"public/img/team-card-linh.webp\" alt=\"collaborator 6\">";
-						$r.="<img src=\"public/img/team-card-loucia.webp\" alt=\"collaborator 7\">";
-						$r.="<img src=\"public/img/team-card-merwan.webp\" alt=\"collaborator 8\">";
+						$r.="<img src=\"public/img/team-card-juan-$lang.webp\" alt=\"Juan Villefose\">"; // TO DO: vérifier les noms dans les alt
+						$r.="<img src=\"public/img/team-card-linh-$lang.webp\" alt=\"Linh Nguyen\">";
+						$r.="<img src=\"public/img/team-card-loucia-$lang.webp\" alt=\"Loucia Laize\">";
+						$r.="<img src=\"public/img/team-card-merwane-$lang.webp\" alt=\"Merwan [...]\">";
 					$r.="</div>";
 					$r.="<div class=\"slide3\">";
-						$r.="<img src=\"public/img/team-card-solan.webp\" alt=\"collaborator 9\">";
-						$r.="<img src=\"public/img/team-card-tiffany.webp\" alt=\"collaborator 10\">";
-						$r.="<img src=\"public/img/team-card-pdg.webp\" alt=\"collaborator 11\">";
+						$r.="<img src=\"public/img/team-card-solan-$lang.webp\" alt=\"Solan Minos\">";
+						$r.="<img src=\"public/img/team-card-tiffany-$lang.webp\" alt=\"Tiffany Devaux\">";
+						//$r.="<img src=\"public/img/team-card-pdg-$lang.webp\" alt=\"PDG\">";
 					$r.="</div>";
 				$r.="</div>";
 				$r.="<button class=\"carrousel-btn prev\">";
-					$r.="<i class=\"fas fa-arrow-left\">";
-					$r.="</i>";
+					$r.="<img src=\"public/img/icon-arrow-right-2.svg\" alt=\"Précédent\">";
+					/*$r.="<i class=\"fas fa-arrow-left\">";
+					$r.="</i>";*/
 				$r.="</button>";
 				$r.="<button class=\"carrousel-btn next\">";
-					$r.="<i class=\"fas fa-arrow-right\">";
-					$r.="</i>";
+				$r.="<img src=\"public/img/icon-arrow-right-2.svg\" alt=\"Suivant\">";
+					/*$r.="<i class=\"fas fa-arrow-right\">";
+					$r.="</i>";*/
 				$r.="</button>";
 			$r.="</div>";
 		$r.="</section>";

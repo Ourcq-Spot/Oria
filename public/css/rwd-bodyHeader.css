@@ -16,7 +16,8 @@ body > header #websiteMenu-btn {
   display: none;
   width: 2em;
   height: 2em;
-  padding: .25em;
+  padding: .33em;
+  margin-left: -0.25em;
   box-sizing: border-box;
   cursor: pointer;
 }
@@ -27,12 +28,17 @@ body > header #websiteMenu-btn:hover svg {
   transform: scale(.85);
 }
 body > header #websiteMenu-btn path {
+  /*stroke: var(--color-4, white);*/
   stroke: var(--color-2, white);
   stroke-width: 15;
+
+  filter: brightness(1.2);
 }
 body > header #websiteMenu-btn:hover path {
   stroke: var(--color-4, white);
   stroke-width: 13.33;
+  
+  filter: brightness(1);
 }
 body > header #websiteMenu-btn path:nth-child(1) {
   d: path("M0, 7.5 Q50, 7.5 100, 7.5");
@@ -72,6 +78,7 @@ body[data-websitemenu-status="opened"] > header #websiteMenu-btn path:nth-child(
   }
   body > header > :last-child {
     padding-left: 0 !important;
+    padding-right: .85em !important;
   }
   body > header #websiteMenu-btn {
     display: block;
@@ -115,9 +122,6 @@ body[data-websitemenu-status="opened"] > header #websiteMenu-btn path:nth-child(
     z-index: 105;
     background-color: var(--color-31, #00000088);
   }
-  /*body[data-websitemenu-status="open"] > *:not(header) {
-    filter: brightness(.5);
-  }*/
 }
 
 

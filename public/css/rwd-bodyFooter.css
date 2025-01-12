@@ -1,8 +1,5 @@
 
 
-@media screen and (max-width: 825px) {
-
-}
 @media screen and (max-width: 700px) {
   body > footer > .top-row {
     justify-content: space-between !important;
